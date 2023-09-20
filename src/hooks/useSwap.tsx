@@ -4,6 +4,7 @@ import { Pool } from '@uniswap/v3-sdk';
 import { Token } from '@uniswap/sdk-core';
 import IUniswapV3PoolArtifact from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json';
 import ISwapRouterArtifact from '@uniswap/v3-periphery/artifacts/contracts/interfaces/ISwapRouter.sol/ISwapRouter.json';
+import IUniswapV3FactoryArtifact from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Factory.sol/IUniswapV3Factory.json';
 
 import useFromToken from './useFromToken';
 
@@ -19,20 +20,25 @@ interface State {
   tick: number;
 }
 
-const WETH_DECIMALS = 18;
-const UNI_DECIMALS = 18;
+const FROM_TOKEN_DECIMALS = 18;
+const TO_TOKEN_DECIMALS = 18;
 
-// WETH - UNI pool with 0.3% fee
-const POOL_ADDRESS = '0x07A4f63f643fE39261140DF5E613b9469eccEC86';
-
+const UNI_FACTORY_ADDRESS = '0x1F98431c8aD98523631AE4a59f267346ea31F984';
 const ROUTER_ADDRESS = '0xE592427A0AEce92De3Edee1F18E0157C05861564';
 
-const useSwap = () => {
+const useSwap = (fromTokenAddress: string, toTokenAddress: string) => {
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address } = useAccount();
+  const uniFactoryContract = useContract({
+    address: UNI_FACTORY_ADDRESS,
+    abi: IUniswapV3FactoryArtifact.abi,
+    signerOrProvider: provider
+  });
+  // pool with 0.3% fee
+  const poolAddress = uniFactoryContract?.getPool(fromTokenAddress, toTokenAddress, 3000).then((data: string) => data);
   const poolContract = useContract({
-    address: POOL_ADDRESS,
+    address: poolAddress,
     abi: IUniswapV3PoolArtifact.abi,
     signerOrProvider: provider
   });
@@ -41,21 +47,20 @@ const useSwap = () => {
     abi: ISwapRouterArtifact.abi,
     signerOrProvider: signer
   });
-  const { approve, deposit } = useFromToken();
+  const { approve } = useFromToken(fromTokenAddress);
 
   const swap = async (amount: number) => {
     if (!routerContract) throw new Error('Router contract has not been initialized');
 
-    await deposit(amount);
     await approve(ROUTER_ADDRESS, amount);
 
     const immutables = await getPoolImmutables();
 
-    const parsedAmount = ethers.utils.parseUnits(amount.toString(), UNI_DECIMALS);
+    const parsedAmount = ethers.utils.parseUnits(amount.toString(), TO_TOKEN_DECIMALS);
 
     const params = {
-      tokenIn: immutables.token1,
-      tokenOut: immutables.token0,
+      tokenIn: fromTokenAddress,
+      tokenOut: toTokenAddress,
       fee: immutables.fee,
       recipient: address,
       deadline: Math.floor(Date.now() / 1000) + 60 * 10,
@@ -74,8 +79,8 @@ const useSwap = () => {
   const getQuote = async (amount: number) => {
     const [immutables, state] = await Promise.all([getPoolImmutables(), getPoolState()]);
 
-    const tokenA = new Token(chainId.goerli, immutables.token0, UNI_DECIMALS);
-    const tokenB = new Token(chainId.goerli, immutables.token1, WETH_DECIMALS);
+    const tokenA = new Token(chainId.goerli, toTokenAddress, TO_TOKEN_DECIMALS);
+    const tokenB = new Token(chainId.goerli, fromTokenAddress, FROM_TOKEN_DECIMALS);
 
     const pool = new Pool(
       tokenA,
@@ -86,6 +91,11 @@ const useSwap = () => {
       state.tick
     );
 
+    // const rate =
+    //   immutables.token1 == fromTokenAddress
+    //     ? parseFloat(pool.token1Price.toFixed(2))
+    //     : parseFloat(pool.token0Price.toFixed(2));
+    // const outputAmount = amount * rate;
     const outputAmount = amount * parseFloat(pool.token1Price.toFixed(2));
 
     return outputAmount;
