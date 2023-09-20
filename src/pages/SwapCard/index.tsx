@@ -85,7 +85,7 @@ const SwapCard = () => {
   return (
     <>
       {isLoading && <LinearProgress />}
-      <div className="bg-secondary-background-color p-8 absolute w-1/2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg flex flex-col gap-8 w-96 border">
+      <div className="bg-secondary-background-color p-8 absolute w-full lg:w-1/2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg flex flex-col gap-8 border">
         <div>
           <div className="flex">
             <TextField

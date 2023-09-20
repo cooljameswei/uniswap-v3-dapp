@@ -21,11 +21,8 @@ const NavBar = () => {
 
   return (
     <div className="h-full">
-      <Toolbar className="flex flex-row justify-between">
-        <Tabs 
-          value={tabIndex}
-          onChange={handleTabChange}
-        >
+      <Toolbar className="flex flex-col md:flex-row justify-between">
+        <Tabs value={tabIndex} onChange={handleTabChange}>
           <Tab icon={<CurrencyExchange />} label="Swap" />
           <Tab icon={<HistoryIcon />} label="History" />
         </Tabs>
