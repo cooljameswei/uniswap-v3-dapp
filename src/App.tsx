@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
-import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 import './App.css';
@@ -13,7 +14,7 @@ export const apolloClient = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const { provider, webSocketProvider } = configureChains([chain.goerli], [publicProvider()]);
+const { provider, webSocketProvider } = configureChains([goerli], [publicProvider()]);
 
 const client = createClient({
   autoConnect: true,

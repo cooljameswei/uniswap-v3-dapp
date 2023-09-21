@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
-import { chainId, useAccount, useContract, useProvider, useSigner } from 'wagmi';
+import { useAccount, useContract, useProvider, useSigner } from 'wagmi';
+import { goerli } from 'wagmi/chains';
 import { Pool } from '@uniswap/v3-sdk';
 import { Token } from '@uniswap/sdk-core';
 import IUniswapV3PoolArtifact from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json';
@@ -79,8 +80,8 @@ const useSwap = (fromTokenAddress: string, toTokenAddress: string) => {
   const getQuote = async (amount: number) => {
     const [immutables, state] = await Promise.all([getPoolImmutables(), getPoolState()]);
 
-    const tokenA = new Token(chainId.goerli, toTokenAddress, TO_TOKEN_DECIMALS);
-    const tokenB = new Token(chainId.goerli, fromTokenAddress, FROM_TOKEN_DECIMALS);
+    const tokenA = new Token(goerli.id, toTokenAddress, TO_TOKEN_DECIMALS);
+    const tokenB = new Token(goerli.id, fromTokenAddress, FROM_TOKEN_DECIMALS);
 
     const pool = new Pool(
       tokenA,

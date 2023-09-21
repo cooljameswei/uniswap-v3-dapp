@@ -1,5 +1,6 @@
 import React from 'react';
-import { chainId, useAccount, useConnect } from 'wagmi';
+import { useAccount, useConnect } from 'wagmi';
+import { goerli } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Button, Tab, Tabs, Toolbar } from '@mui/material';
 import { CurrencyExchange, History as HistoryIcon } from '@mui/icons-material';
@@ -11,7 +12,7 @@ const NavBar = () => {
   const { address } = useAccount();
   const { connect } = useConnect({
     connector: new InjectedConnector(),
-    chainId: chainId.goerli
+    chainId: goerli.id
   });
 
   const [tabIndex, setTabIndex] = React.useState(0);

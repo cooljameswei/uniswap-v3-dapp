@@ -21,12 +21,12 @@ const SwapCard = () => {
   const { swap, getQuote } = useSwap(fromToken, toToken);
   const { address } = useAccount();
   const { data: FromTokenBalance } = useBalance({
-    addressOrName: address,
+    address: address,
     token: fromToken as `0x${string}`,
     watch: true
   });
   const { data: ToTokenBalance } = useBalance({
-    addressOrName: address,
+    address: address,
     token: toToken as `0x${string}`,
     watch: true
   });
