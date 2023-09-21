@@ -15,7 +15,7 @@ const SwapCard = () => {
   const [fromToken, setFromToken] = React.useState('0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6');
   const [toToken, setToToken] = React.useState('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984');
   const [fromTokenAmount, setFromTokenAmount] = React.useState('');
-  const [isOpenSuccess, setIsOpenSuccess] = React.useState(true);
+  const [isOpenSuccess, setIsOpenSuccess] = React.useState(false);
   const [isOpenError, setIsOpenError] = React.useState(false);
 
   const { swap, getQuote } = useSwap(fromToken, toToken);
