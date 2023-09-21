@@ -6,7 +6,7 @@
           var(--accent-color-from),
           var(--accent-color-to)
   );
-  --primary-background-color: hsl(0, 0%, 90%);
+  --primary-background-color: hsl(0, 0%, 0%);
   --secondary-background-color: hsl(0, 0%, 75%);
   --tertiary-background-color: hsl(240, 6%, 26%);
   --primary-font-color: hsl(0, 0%, 15%);

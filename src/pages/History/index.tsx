@@ -42,16 +42,16 @@ const History = () => {
       {loading && <LinearProgress />}
       {!loading && data && (
         <div className="p-7">
-          <TableContainer component={Paper} className="!shadow-xl">
+          <TableContainer component={Paper} className="!shadow-xl p-7">
             <Table sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>
-                  <TableCell className="!font-bold !text-xl">Token 0 Address</TableCell>
-                  <TableCell className="!font-bold !text-xl">Token 0 Symbol</TableCell>
-                  <TableCell className="!font-bold !text-xl">Token 0 Amount</TableCell>
-                  <TableCell className="!font-bold !text-xl">Token 1 Address</TableCell>
-                  <TableCell className="!font-bold !text-xl">Token 1 Symbol</TableCell>
-                  <TableCell className="!font-bold !text-xl">Token 1 Amount</TableCell>
+                  <TableCell className="!text-center !font-bold">Token 0 Address</TableCell>
+                  <TableCell className="!font-bold">Token 0 Symbol</TableCell>
+                  <TableCell className="!font-bold">Token 0 Amount</TableCell>
+                  <TableCell className="!text-center !font-bold">Token 1 Address</TableCell>
+                  <TableCell className="!font-bold">Token 1 Symbol</TableCell>
+                  <TableCell className="!font-bold">Token 1 Amount</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

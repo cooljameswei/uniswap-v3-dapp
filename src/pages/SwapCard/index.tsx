@@ -91,7 +91,8 @@ const SwapCard = () => {
     <>
       {isLoading && <LinearProgress />}
       <div className="bg-white p-7 absolute w-full lg:w-1/2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg flex flex-col gap-7 shadow-2xl">
-        <Paper className="p-7 flex flex-col gap-7 !shadow-lg">
+        <Paper className="p-7 flex flex-col gap-7">
+          <p> From Token </p>
           <div>
             <div className="flex">
               <TextField
@@ -99,6 +100,11 @@ const SwapCard = () => {
                 type="text"
                 value={fromToken}
                 placeholder="From Token Address"
+                sx={{
+                  '.MuiInputBase-root': {
+                    'border-radius': '4px 0 0 4px'
+                  }
+                }}
                 disabled={address ? false : true}
                 onChange={(event) => onChangeFromToken(event.target.value)}
               />
@@ -129,7 +135,8 @@ const SwapCard = () => {
           </div>
         </Paper>
 
-        <Paper className="p-7 flex flex-col gap-7 !shadow-lg">
+        <Paper className="p-7 flex flex-col gap-7">
+          <p> To Token </p>
           <div>
             <div className="flex">
               <TextField
@@ -137,6 +144,11 @@ const SwapCard = () => {
                 type="text"
                 value={toToken}
                 placeholder="To Token Address"
+                sx={{
+                  '.MuiInputBase-root': {
+                    'border-radius': '4px 0 0 4px'
+                  }
+                }}
                 disabled={address ? false : true}
                 onChange={(event) => onChangeToToken(event.target.value)}
               />
@@ -168,7 +180,7 @@ const SwapCard = () => {
           onClick={onClickSwapButton}
           variant="outlined"
           size="large"
-          className="shadow-xl !py-3"
+          className="!py-3"
         >
           Swap
         </Button>

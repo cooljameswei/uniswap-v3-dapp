@@ -23,19 +23,32 @@ const NavBar = () => {
   return (
     <div className="h-full">
       <Toolbar className="flex flex-col md:flex-row justify-between">
-        <Tabs value={tabIndex} onChange={handleTabChange}>
+        <Tabs
+          value={tabIndex}
+          onChange={handleTabChange}
+          sx={{
+            '.MuiTab-root': { color: 'rgba(222,222,222,0.55)' },
+            '.Mui-selected': {
+              color: '#bfdbfe'
+            }
+          }}
+        >
           <Tab icon={<CurrencyExchange />} label="Swap" />
           <Tab icon={<HistoryIcon />} label="History" />
         </Tabs>
         <div>
           {address ? (
-            <p>Connected to: {address}</p>
+            <p>
+              <span className="text-white">Connected to: </span>
+              <span className="text-blue-200 underline">{address}</span>
+            </p>
           ) : (
             <Button
               onClick={() => {
                 connect();
               }}
-              variant="outlined"
+              variant="contained"
+              className="!text-white"
             >
               Connect Wallet
             </Button>
