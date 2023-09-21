@@ -20,10 +20,12 @@ The tool consists of two pages: SWAP and HISTORY.
 ![3](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/a9d2bc3f-74f5-433e-9c40-a2eb622b986d)
 
 - Once the Token addresses and the entered amount are valid, users can initiate the swap by clicking the `SWAP` button.
-![4](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/508aeda8-4bb2-4ca5-94df-bd8422024bc2)
+![4](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/1102c3da-27f6-457f-b754-3d8e7289aef8)
+
 
 - If the swap is successful, a `Success` message is displayed. If something went wrong, an `Error` message is displayed. You can check swap history by navigating to `History` tab.
-![5](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/a00eb79f-eceb-420f-8730-24ab004456db)
+![5](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/0d3d6fef-22f7-4f03-a563-148b97af503f)
+
 
 ### HISTORY
 On this page, users can view their swapping history for their wallets. It displays information about the swapped Token pairs, including the address, symbol, and the amount that was exchanged.
