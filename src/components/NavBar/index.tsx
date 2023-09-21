@@ -1,11 +1,11 @@
 import React from 'react';
 import { chainId, useAccount, useConnect } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
+import { Button, Tab, Tabs, Toolbar } from '@mui/material';
+import { CurrencyExchange, History as HistoryIcon } from '@mui/icons-material';
 
 import SwapCard from '../../pages/SwapCard';
 import History from '../../pages/History';
-import { Button, Tab, Tabs, Toolbar } from '@mui/material';
-import { CurrencyExchange, History as HistoryIcon } from '@mui/icons-material';
 
 const NavBar = () => {
   const { address } = useAccount();

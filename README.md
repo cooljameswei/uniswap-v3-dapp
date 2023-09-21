@@ -5,25 +5,23 @@
 </div>
 
 ## About The Project
-This project is for building a Token Swapping tool with Uniswap V3 on Goerli test network.
+This project involves building a Token Swapping tool using Uniswap V3 on the Goerli test network.
 
-This tool consists of two pages; SWAP and HISTORY
+The tool consists of two pages: SWAP and HISTORY.
 
 ### SWAP
-- Users must connect their wallet before proceeding swap.
-- Users can add `From Token` and `To Token` addresses.
-For example, `0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6` for WETH, `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984` for UNI. When users enter a valid token address, it updates the Token symbol besides of the amount input box.
-- Users can enter `From Token` amount, then the tool calculates automatically the `To Token` amount. If the entered value is larger than stock, it displays error message.
-- Token addresses and the entered amount is valid, users can do swap by clicking `SWAP` button.
+- Users must connect their wallet before proceeding with the swap.
+- Users can enter the addresses of the `From Token` and `To Token`. For example, `0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6` for WETH and `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984` for UNI. When users enter a valid token address, the Token symbol is automatically updated.
+- Users can enter the amount of the `From Token`, and the tool automatically calculates the `To Token` amount. If the entered value is larger than the available stock, an error message is displayed.
+- Once the Token addresses and the entered amount are valid, users can initiate the swap by clicking the `SWAP` button.
+- If the swap is successful, a `Success` message is displayed. If something went wrong, an `Error` message is displayed.
 
 ### HISTORY
-Users can see their swapping history on this page for their wallets. It displays the swapped Token pairs info; address, symbol and the swapped amount.
+On this page, users can view their swapping history for their wallets. It displays information about the swapped Token pairs, including the address, symbol, and the amount that was exchanged.
 
 
 ## Built With
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-In this project, I used [Material UI](https://mui.com/material-ui/) and [Tailwind CSS](https://tailwindcss.com/) as well as React components for building frontend.
-For formatting codebase, [Prettier](https://prettier.io/) was used. For interacting with Ethereum network, [Ethers.js](https://docs.ethers.org/v6/) and [Wagmi.sh](https://wagmi.sh/) were used.
+This project was initiated with [Create React App](https://github.com/facebook/create-react-app). It utilizes [Material UI](https://mui.com/material-ui/) and [Tailwind CSS](https://tailwindcss.com/) for building the frontend, along with various React components. The codebase is formatted with [Prettier](https://prettier.io/). To interact with the Ethereum network, [Ethers.js](https://docs.ethers.org/v6/) and [Wagmi.sh](https://wagmi.sh/) are utilized.
 
 
 ## Getting Started

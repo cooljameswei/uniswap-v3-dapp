@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { useAccount } from 'wagmi';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { LinearProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const SWAP_QUERY = gql`
@@ -41,17 +41,17 @@ const History = () => {
     <>
       {loading && <LinearProgress />}
       {!loading && data && (
-        <div className="p-5">
-          <TableContainer component={Paper}>
+        <div className="p-7">
+          <TableContainer component={Paper} className="!shadow-xl">
             <Table sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>
-                  <TableCell>Token 0 Address</TableCell>
-                  <TableCell>Token 0 Symbol</TableCell>
-                  <TableCell>Token 0 Amount</TableCell>
-                  <TableCell>Token 1 Address</TableCell>
-                  <TableCell>Token 1 Symbol</TableCell>
-                  <TableCell>Token 1 Amount</TableCell>
+                  <TableCell className="!font-bold !text-xl">Token 0 Address</TableCell>
+                  <TableCell className="!font-bold !text-xl">Token 0 Symbol</TableCell>
+                  <TableCell className="!font-bold !text-xl">Token 0 Amount</TableCell>
+                  <TableCell className="!font-bold !text-xl">Token 1 Address</TableCell>
+                  <TableCell className="!font-bold !text-xl">Token 1 Symbol</TableCell>
+                  <TableCell className="!font-bold !text-xl">Token 1 Amount</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
