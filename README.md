@@ -11,10 +11,21 @@ The tool consists of two pages: SWAP and HISTORY.
 
 ### SWAP
 - Users must connect their wallet before proceeding with the swap.
+![1](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/970a713c-30d8-4f71-baf0-83c823fecccc)
+
 - Users can enter the addresses of the `From Token` and `To Token`. For example, `0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6` for WETH and `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984` for UNI. When users enter a valid token address, the Token symbol is automatically updated.
+![2](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/aca1aa8b-a45a-49cb-a331-8f77fab569ec)
+
 - Users can enter the amount of the `From Token`, and the tool automatically calculates the `To Token` amount. If the entered value is larger than the available stock, an error message is displayed.
+![3](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/a9d2bc3f-74f5-433e-9c40-a2eb622b986d)
+
 - Once the Token addresses and the entered amount are valid, users can initiate the swap by clicking the `SWAP` button.
-- If the swap is successful, a `Success` message is displayed. If something went wrong, an `Error` message is displayed.
+![4](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/1102c3da-27f6-457f-b754-3d8e7289aef8)
+
+
+- If the swap is successful, a `Success` message is displayed. If something went wrong, an `Error` message is displayed. You can check swap history by navigating to `History` tab.
+![5](https://github.com/tsremarkable/uniswap-v3-dapp/assets/110060055/0d3d6fef-22f7-4f03-a563-148b97af503f)
+
 
 ### HISTORY
 On this page, users can view their swapping history for their wallets. It displays information about the swapped Token pairs, including the address, symbol, and the amount that was exchanged.
