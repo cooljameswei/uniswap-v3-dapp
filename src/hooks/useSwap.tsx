@@ -92,11 +92,6 @@ const useSwap = (fromTokenAddress: string, toTokenAddress: string) => {
       state.tick
     );
 
-    // const rate =
-    //   immutables.token1 == fromTokenAddress
-    //     ? parseFloat(pool.token1Price.toFixed(2))
-    //     : parseFloat(pool.token0Price.toFixed(2));
-    // const outputAmount = amount * rate;
     const outputAmount = amount * parseFloat(pool.token1Price.toFixed(2));
 
     return outputAmount;
